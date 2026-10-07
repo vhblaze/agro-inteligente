@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroInteligente</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">🌱</span>
+      <span class="brand-text">AgroInteligente</span>
+    </div>
+    <nav>
+      <a href="#" class="nav-item active" data-view="inicio">🏠 Início</a>
+      <a href="#" class="nav-item" data-view="dados">📊 Base de Dados</a>
+      <a href="#" class="nav-item" data-view="sobre">ℹ️ Sobre o Projeto</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <div>
+        <h1>AgroInteligente</h1>
+        <p>Sistema de apoio à decisão agrícola — agente inteligente, sistema especialista, lógica fuzzy e machine learning.</p>
+      </div>
+      <div class="user">🌾 Talhão do produtor</div>
+    </header>
+
+    <section id="view-inicio">
+      <div class="panel">
+        <h2>📥 Dados do Talhão</h2>
+        <p class="hint">Informe as condições atuais para o AgroAgente analisar e recomendar a ação.</p>
+        <form id="form-analise" class="grid-form">
+          <div class="field">
+            <label>Umidade do solo (%)</label>
+            <input type="number" id="umidade_solo" min="0" max="100" value="28" required>
+          </div>
+          <div class="field">
+            <label>Temperatura (°C)</label>
+            <input type="number" id="temperatura" min="0" max="50" value="31" required>
+          </div>
+          <div class="field">
+            <label>Umidade do ar (%)</label>
+            <input type="number" id="umidade_ar" min="0" max="100" value="75" required>
+          </div>
+          <div class="field">
+            <label>Chuva acumulada 7 dias (mm)</label>
+            <input type="number" id="chuva_7dias" min="0" max="200" value="5" required>
+          </div>
+          <div class="field">
+            <label>Adubação aplicada (kg/ha)</label>
+            <input type="number" id="adubacao" min="0" max="500" value="180" required>
+          </div>
+          <div class="field">
+            <label>Área do talhão (ha)</label>
+            <input type="number" id="area_ha" min="0.5" max="100" step="0.1" value="12" required>
+          </div>
+          <div class="field">
+            <label>Histórico de pragas</label>
+            <select id="historico_pragas">
+              <option value="0">Baixo</option>
+              <option value="1" selected>Médio</option>
+              <option value="2">Alto</option>
+            </select>
+          </div>
+          <div class="field checkbox-field">
+            <label><input type="checkbox" id="chuva_prevista"> Há previsão de chuva nos próximos dias</label>
+          </div>
+          <button type="submit" class="btn-analisar">🔎 Analisar Talhão</button>
+        </form>
+      </div>
+
+      <h2 class="section-title">🧠 Resultados das Técnicas de IA</h2>
+      <div class="cards-grid">
+
+        <div class="card card-especialista">
+          <h3>📋 Sistema Especialista</h3>
+          <div id="out-especialista" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-fuzzy">
+          <h3>〰️ Lógica Fuzzy</h3>
+          <div id="out-fuzzy" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-arvore">
+          <h3>🌳 Árvore de Decisão</h3>
+          <div id="out-arvore" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-knn">
+          <h3>📍 KNN</h3>
+          <div id="out-knn" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-kmeans">
+          <h3>🧩 K-Means</h3>
+          <div id="out-kmeans" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-regressao">
+          <h3>📈 Regressão Linear</h3>
+          <div id="out-regressao" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-apriori full-width">
+          <h3>🛒 Apriori</h3>
+          <div id="out-apriori" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+        <div class="card card-agente full-width">
+          <h3>🤖 Decisão do Agente Inteligente</h3>
+          <div id="out-agente" class="card-body placeholder">Aguardando análise...</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="view-dados" class="hidden">
+      <div class="panel">
+        <h2>📊 Base de Dados dos Talhões</h2>
+        <div id="dataset-info">Carregando...</div>
+      </div>
+    </section>
+
+    <section id="view-sobre" class="hidden">
+      <div class="panel">
+        <h2>ℹ️ Sobre o Projeto</h2>
+        <p>O <strong>AgroInteligente</strong> é um sistema de apoio à decisão agrícola que integra quatro pilares de Inteligência Artificial:</p>
+        <ul>
+          <li><strong>Agente Inteligente</strong> — percebe o ambiente (talhão), raciocina com as demais técnicas e age recomendando irrigação, alertas e produtividade esperada.</li>
+          <li><strong>Sistema Especialista</strong> — regras SE/ENTÃO sobre irrigação, estresse hídrico e risco de pragas.</li>
+          <li><strong>Lógica Fuzzy</strong> — trata a gradação entre solo seco/ideal/encharcado e temperatura fria/amena/quente.</li>
+          <li><strong>Machine Learning</strong> — Árvore de Decisão, KNN, K-Means, Regressão Linear e Apriori aplicados a um dataset sintético de talhões.</li>
+        </ul>
+        <p>Projeto desenvolvido para a disciplina de Inteligência Artificial — Trabalho V1.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
